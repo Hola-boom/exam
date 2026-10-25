@@ -2,133 +2,266 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bitwise Lab — Python Exam Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://cdn.jsdelivr.net; worker-src blob:; connect-src https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Bitwise Lab – Python Exam Portal</title>
 <style>
-:root{--bg:#f4f7fb;--panel:#fff;--ink:#17243b;--muted:#66758c;--line:#e0e7f0;--blue:#3157d5;--teal:#0f9f91;--soft:#edf2ff;--green:#138a59;--red:#c53d4d;--shadow:0 12px 35px #18345b0d}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button,textarea,input{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;font-weight:650;transition:.15s}button:focus-visible,textarea:focus-visible{outline:3px solid #91a7ff;outline-offset:2px}
-.top{background:#111d35;color:#fff;padding:17px max(20px,calc((100% - 1250px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;gap:11px;align-items:center;font-size:18px;font-weight:800;letter-spacing:-.3px}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#6484ff,#20c7b2);display:grid;place-items:center;font-weight:900;color:#fff}.top small{color:#b8c6df;display:block;font-size:12px;font-weight:500}.timer{border:1px solid #42516d;background:#1b2b49;padding:9px 13px;border-radius:10px;font-variant-numeric:tabular-nums;font-weight:750;white-space:nowrap}
-.wrap{max-width:1250px;margin:25px auto;padding:0 18px}.hero{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:20px}.eyebrow{color:var(--blue);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1.3px}.hero h1{margin:4px 0;font-size:clamp(25px,4vw,35px);letter-spacing:-1px}.hero p{margin:0;color:var(--muted)}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.chip{background:#e7ecf7;color:#41516b;border-radius:30px;padding:5px 10px;font-size:12px;font-weight:700}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.main{min-width:0}.panel,.sidecard{background:var(--panel);border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow)}.sectionhead{padding:17px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.sectionhead h2{margin:0;font-size:17px}.sectionhead p{margin:3px 0 0;color:var(--muted);font-size:13px}.progress{height:6px;background:#e8edf5;border-radius:20px;overflow:hidden;margin-top:12px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));width:0%;transition:width .2s}
-.q{padding:20px;border-bottom:1px solid var(--line)}.q:last-child{border-bottom:0}.qtop{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}.qnum{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:.7px}.level{font-size:11px;font-weight:800;border-radius:6px;padding:4px 7px;background:#eef2ff;color:#4357bd}.level.inter{background:#e6f8f5;color:#087d72}.level.adv{background:#fff1df;color:#9a5a09}.q h3{font-size:16px;line-height:1.5;margin:0 0 12px;font-weight:700}.options{display:grid;gap:8px}.option{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;padding:10px 12px;cursor:pointer}.option:hover{border-color:#a9b8f5;background:#fafbff}.option input{margin-top:4px;accent-color:var(--blue)}.option code,code{font-family:"SFMono-Regular",Consolas,monospace;background:#f0f3f8;padding:2px 5px;border-radius:5px;font-size:.92em}
-.codebox{border:1px solid #d8e0ec;border-radius:12px;overflow:hidden;margin-top:12px}.codebar{background:#19253b;color:#d7e3f6;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;font-size:12px}.codebar span{opacity:.85}.editor{display:block;width:100%;min-height:155px;resize:vertical;border:0;border-radius:0;padding:14px;background:#101a2b;color:#e6eefc;font:13px/1.65 "SFMono-Regular",Consolas,monospace;tab-size:4;outline:none}.editor:focus{box-shadow:inset 0 0 0 2px #6686ff}.runrow{display:flex;gap:8px;flex-wrap:wrap;background:#f7f9fc;border-top:1px solid #29364a;padding:9px}.btn-primary{background:var(--blue);color:#fff}.btn-primary:hover{background:#2446ba}.btn-soft{background:#edf1f8;color:#32435f}.btn-teal{background:#dff7f2;color:#087c70}.output{white-space:pre-wrap;overflow-wrap:anywhere;min-height:30px;max-height:220px;overflow:auto;background:#0c1422;color:#bde8d2;padding:10px 13px;font:12px/1.6 "SFMono-Regular",Consolas,monospace;display:none}.output.show{display:block}.answer{width:100%;min-height:70px;border:1px solid var(--line);border-radius:10px;padding:11px;resize:vertical;background:#fbfcff}.answer:focus{outline:2px solid #c3ceff;border-color:#8fa3ff}
-.sidebar{position:sticky;top:18px;display:grid;gap:14px}.sidecard{padding:17px}.sidecard h3{margin:0 0 10px;font-size:14px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{padding:12px;background:#f5f7fc;border-radius:11px}.stat b{font-size:22px;display:block}.stat span{font-size:11px;color:var(--muted)}.navgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.navbtn{padding:8px 0;border:1px solid var(--line);background:#fff;color:#526078;font-size:12px}.navbtn.done{background:#e1f7ed;border-color:#9bdcbd;color:#087848}.navbtn.current{border:2px solid var(--blue);color:var(--blue);padding:7px 0}.legend{font-size:11px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;background:#d5dce8}.dot.green{background:#45ba83}.dot.blue{background:var(--blue)}.submit{width:100%;background:#14233c;color:#fff;margin-top:10px;padding:13px}.submit:hover{background:#263b60}.note{font-size:12px;color:var(--muted);margin:9px 0 0}.footer{color:var(--muted);font-size:12px;text-align:center;padding:24px 10px}.modal{position:fixed;inset:0;background:#0b1730aa;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.open{display:flex}.modalbox{max-width:560px;width:100%;background:#fff;border-radius:18px;padding:25px;box-shadow:0 25px 80px #0003;max-height:90vh;overflow:auto}.modalbox h2{margin-top:0}.scorebig{font-size:42px;font-weight:850;color:var(--blue)}.reviewitem{padding:10px;border-radius:9px;background:#f4f6fb;margin:8px 0;font-size:13px}.close{float:right;background:#edf1f8;color:#273650}
-@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static;grid-row:1}.sidebar .sidecard:first-child{display:none}.navgrid{grid-template-columns:repeat(10,1fr)}.hero{display:block}.hero .btn-primary{margin-top:14px}}@media(max-width:520px){.top{padding:12px 14px}.brand{font-size:15px}.timer{font-size:12px;padding:7px}.wrap{padding:0 10px;margin:17px auto}.q{padding:15px}.sectionhead{padding:14px}.navgrid{grid-template-columns:repeat(5,1fr)}.hero h1{font-size:27px}}
+:root{--bg:#f4f7fb;--panel:#fff;--ink:#17243b;--muted:#5d6b82;--line:#dfe6f0;--blue:#3157d5;--teal:#0f9f91;--green:#138a59;--red:#c53d4d;--amber:#9a5a09;--navy:#111d35}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,textarea,input{font:inherit}button{cursor:pointer;border:0;border-radius:9px;padding:9px 14px;font-weight:650}button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:3px solid #91a7ff;outline-offset:2px}
+code{font-family:Consolas,"SFMono-Regular",monospace;background:#eef1f7;padding:1px 5px;border-radius:5px;font-size:.92em}
+.top{background:var(--navy);color:#fff;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;position:sticky;top:0;z-index:10}
+.brand{display:flex;gap:10px;align-items:center;font-weight:800;font-size:17px}.logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6484ff,#20c7b2);display:grid;place-items:center}
+.who{font-size:13px;color:#b8c6df}.timer{background:#1b2b49;border:1px solid #42516d;border-radius:9px;padding:7px 13px;font-weight:750;font-variant-numeric:tabular-nums}.timer.low{background:#5a1f2a;border-color:#c53d4d}
+.wrap{max-width:1300px;margin:20px auto;padding:0 16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start}.side{position:sticky;top:74px;display:grid;gap:12px}.side .card{padding:14px}.side h3{margin:0 0 8px;font-size:14px}
+.nav{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.nb{padding:7px 0;border:1px solid var(--line);background:#fff;color:#4a5870;font-size:13px;position:relative}.nb.done{background:#e1f7ed;border-color:#8fd6b4;color:#087848}.nb.cur{border:2px solid var(--blue);padding:6px 0;color:var(--blue)}.nb.flag::after{content:"";position:absolute;top:3px;right:3px;width:7px;height:7px;border-radius:50%;background:#e08a00}
+.legend{font-size:11.5px;color:var(--muted);margin-top:8px}.bar{height:6px;background:#e6ebf3;border-radius:9px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));width:0}
+.qhead{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.qhead b{font-size:15px}.tag{font-size:12px;font-weight:700;border-radius:6px;padding:3px 8px;background:#eef2ff;color:#4357bd;margin-left:6px}.tag.i{background:#e6f8f5;color:#087d72}.tag.a{background:#fff1df;color:var(--amber)}
+.qbody{padding:18px}.qbody h2{margin:0 0 8px;font-size:19px}.opts{display:grid;gap:8px;margin-top:12px}.opt{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}.opt:hover{background:#fafbff;border-color:#a9b8f5}.opt.sel{background:#edf2ff;border-color:var(--blue)}
+details{margin-top:14px;background:#f6f8fc;border:1px solid var(--line);border-radius:10px;padding:10px 13px}summary{cursor:pointer;font-weight:650}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:18px}.ex{margin:10px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}.ex div{padding:7px 11px}.ex .l{background:#f2f5fa;font-weight:700;color:var(--muted);font-size:11.5px}.ex pre{margin:0;padding:7px 11px;font:13px Consolas,monospace;white-space:pre-wrap}
+.edwrap{border:1px solid #cfd8e6;border-radius:11px;overflow:hidden}.edbar{background:#19253b;color:#d7e3f6;padding:7px 12px;display:flex;justify-content:space-between;font-size:12px}.ed{position:relative}
+.ed textarea{display:block;width:100%;height:330px;resize:vertical;border:0;padding:12px;background:#101a2b;color:#e6eefc;font:13.5px/1.6 Consolas,"SFMono-Regular",monospace;tab-size:4;white-space:pre;overflow:auto}.ed textarea:focus{outline:0;box-shadow:inset 0 0 0 2px #6686ff}
+.sug{position:absolute;z-index:5;background:#1e2d49;border:1px solid #4a5e86;border-radius:8px;min-width:190px;box-shadow:0 8px 24px #0006;overflow:hidden;display:none}.sug div{padding:4px 11px;color:#dce6fa;font:12.5px Consolas,monospace;display:flex;justify-content:space-between;gap:14px;cursor:pointer}.sug div.on{background:#3157d5}.sug small{color:#9fb2d6}
+.runrow{display:flex;gap:8px;flex-wrap:wrap;padding:9px;background:#f4f6fa}.b1{background:var(--blue);color:#fff}.b2{background:#e9eef7;color:#2e3f5c}.b3{background:#dff7f2;color:#087c70}.b4{background:var(--navy);color:#fff}.b5{background:#fff3d6;color:var(--amber)}
+.stdin{width:100%;min-height:48px;border:0;border-top:1px solid var(--line);padding:8px 12px;font:13px Consolas,monospace;background:#fbfcff;resize:vertical}
+.out{display:none;white-space:pre-wrap;overflow-wrap:anywhere;max-height:200px;overflow:auto;background:#0c1422;color:#bde8d2;padding:10px 13px;font:12.5px/1.6 Consolas,monospace}.out.show{display:block}.out .bad{color:#ff9aa6}
+.foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 18px;border-top:1px solid var(--line)}
+.center{max-width:640px;margin:40px auto}.center .card{padding:28px}.center h1{margin:0 0 4px;font-size:28px}.center label{display:block;font-weight:650;margin:14px 0 4px}.center input[type=text]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px}
+.rules{padding-left:20px;color:#3b4a63}.rules li{margin:5px 0}.err{color:var(--red);font-size:13px;min-height:18px}
+.modal{position:fixed;inset:0;background:#0b1730b0;display:none;align-items:center;justify-content:center;padding:16px;z-index:30}.modal.open{display:flex}.mbox{background:#fff;border-radius:16px;padding:24px;max-width:640px;width:100%;max-height:90vh;overflow:auto}.mbox h2{margin-top:0}
+.big{font-size:40px;font-weight:850;color:var(--blue)}table{border-collapse:collapse;width:100%;font-size:13px}td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}.ok{color:var(--green);font-weight:700}.no{color:var(--red);font-weight:700}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#14233c;color:#fff;padding:10px 18px;border-radius:10px;display:none;z-index:40;max-width:90%}
+@media(max-width:900px){.layout,.split{grid-template-columns:1fr}.side{position:static;grid-row:1}.nav{grid-template-columns:repeat(10,1fr)}}
+@media(prefers-reduced-motion:no-preference){.bar i{transition:width .2s}}
 </style>
 </head>
 <body>
-<header class="top">
-  <div class="brand"><div class="logo">B</div><div>Bitwise Lab<small>PYTHON SKILLS ASSESSMENT</small></div></div>
-  <div class="timer" id="timer">⏱ 60:00</div>
-</header>
-<div class="wrap">
-  <section class="hero">
-    <div><div class="eyebrow">Coding assessment / 01</div><h1>Python Bitwise Challenge</h1><p>Think in bits. Write clean code. Submit when you're ready.</p><div class="chips"><span class="chip">20 QUESTIONS</span><span class="chip">5 MCQs</span><span class="chip">60 MINUTES</span><span class="chip">BEGINNER → ADVANCED</span></div></div>
-    <button class="btn-primary" onclick="jumpTo(0)">Start / Continue exam ↓</button>
-  </section>
-  <div class="layout">
-    <main class="main">
-      <section class="panel">
-        <div class="sectionhead"><div><h2>Section A · Multiple choice</h2><p>Questions 1–5 · Select one answer per question</p></div><span class="level">5 marks</span></div>
-        <div id="mcqs"></div>
-      </section>
-      <section class="panel" style="margin-top:18px">
-        <div class="sectionhead"><div><h2>Section B · Coding lab</h2><p>Questions 6–20 · Write Python, run it, then submit your solution</p></div><span class="level inter">15 tasks</span></div>
-        <div id="coding"></div>
-      </section>
-      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap">
-        <button class="btn-soft" onclick="saveNow()">Save progress</button>
-        <button class="btn-primary" onclick="submitExam()">Submit exam →</button>
-      </div>
-    </main>
-    <aside class="sidebar">
-      <div class="sidecard"><h3>Exam overview</h3><div class="stats"><div class="stat"><b>20</b><span>Total questions</span></div><div class="stat"><b>60m</b><span>Time limit</span></div><div class="stat"><b id="answered">0</b><span>Attempted</span></div><div class="stat"><b>5</b><span>Auto-graded MCQs</span></div></div><div class="progress"><span id="progressbar"></span></div><p class="note" id="progresslabel">0 of 20 attempted</p></div>
-      <div class="sidecard"><h3>Question navigator</h3><div class="navgrid" id="navigator"></div><div class="legend"><span><i class="dot green"></i>Attempted</span><span><i class="dot blue"></i>Current</span></div></div>
-      <div class="sidecard"><h3>Before you submit</h3><p class="note">• MCQs are marked automatically.</p><p class="note">• Code is saved in this browser.</p><p class="note">• Coding answers are included in your result for review; this portal does not claim they pass hidden tests.</p><button class="submit" onclick="submitExam()">Submit exam</button><p class="note">You can review your MCQ score after submission.</p></div>
-    </aside>
-  </div>
-  <div class="footer">BITWISE LAB · Practice portal · Your work is stored locally in this browser</div>
-</div>
-<div class="modal" id="resultModal" role="dialog" aria-modal="true">
- <div class="modalbox"><button class="close" onclick="closeResults()">Close ✕</button><div class="eyebrow">Assessment submitted</div><h2>Your result</h2><div class="scorebig" id="score">0 / 5</div><p id="scoretext"></p><div id="review"></div><button class="btn-primary" onclick="downloadAnswers()" style="margin-top:12px">Download my answers (.txt)</button><button class="btn-soft" onclick="closeResults()" style="margin:12px 0 0 7px">Back to exam</button></div>
-</div>
+<header class="top"><div class="brand"><div class="logo">B</div><div>Bitwise Lab<div class="who" id="who">Python assessment</div></div></div><div class="timer" id="timer" aria-live="off">60:00</div></header>
+<div class="wrap" id="app"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="mbox" id="mbox"></div></div>
+<div class="toast" id="toast" role="status"></div>
 <script>
-const mcqData=[
- {q:"What is the value of 5 & 3?",opts:["1","2","7","6"],ans:0,why:"0101 AND 0011 = 0001 (decimal 1)."},
- {q:"What is the result of 5 ^ 3?",opts:["1","6","7","8"],ans:1,why:"XOR is 1 when the corresponding bits differ: 0101 XOR 0011 = 0110."},
- {q:"What is the value of 3 << 2?",opts:["6","8","12","16"],ans:2,why:"A left shift by 2 multiplies 3 by 2², giving 12."},
- {q:"In Python, what is the result of ~5?",opts:["5","-5","-6","6"],ans:2,why:"Python integer bitwise NOT follows ~x == -x - 1, so ~5 == -6."},
- {q:"Which expression checks whether integer n is odd?",opts:["(n & 1) == 0","(n | 1) == 0","(n ^ 1) == 0","(n & 1) == 1"],ans:3,why:"The least-significant bit is 1 for odd integers."}
+(()=>{'use strict';
+const DUR=60*60*1000,MAXV=5,KEY='bwl_exam_v2';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=s=>esc(s).replace(/`([^`]+)`/g,'<code>$1</code>');
+const $=id=>document.getElementById(id);
+const L=['Beginner','Intermediate','Advanced'],LC=['','i','a'];
+
+/* ---------- Questions (hidden tests live only inside this closure) ---------- */
+const M=(q,o,a,c,why)=>({t:'m',q,o,a,c,why});
+const C=(lv,title,desc,mode,ex,starter,ref,tests,x={})=>({t:'c',lv,m:lv+1,title,desc,mode,ex,starter,ref,tests,...x});
+const Q=[
+M('What is the value of 5 & 3?',['1','2','7','6'],0,'`&` keeps a bit only when both bits are 1. Example with other numbers: 6 & 3 → 110 & 011 = 010 → 2.','0101 AND 0011 = 0001, which is 1.'),
+M('What is the result of 5 ^ 3?',['1','6','7','8'],1,'`^` (XOR) gives 1 where the bits differ. Example: 6 ^ 3 → 110 ^ 011 = 101 → 5.','0101 XOR 0011 = 0110, which is 6.'),
+M('What is the value of 3 << 2?',['6','8','12','16'],2,'`x << k` multiplies x by 2**k. Example: 5 << 1 → 10 and 1 << 4 → 16.','Shifting left by 2 multiplies by 4, so 3 << 2 = 12.'),
+M('In Python, what is the result of ~5?',['5','-5','-6','6'],2,'For Python integers, `~x` equals `-x - 1`. Example: ~7 → -8 and ~(-1) → 0.','~5 = -5 - 1 = -6.'),
+M('Which expression checks whether integer n is odd?',['(n & 1) == 0','(n | 1) == 0','(n ^ 1) == 0','(n & 1) == 1'],3,'The lowest bit shows parity. Example: 6 = 110 (lowest bit 0, even); 7 = 111 (lowest bit 1, odd).','The lowest bit of an odd number is 1, so (n & 1) == 1.'),
+C(0,'Evaluate AND, OR and XOR','Evaluate `6 & 3`, `6 | 3` and `6 ^ 3`, then print the three results, one per line, in that order. No input is read.','prog',
+ [['','2\n7\n5']],'# Print the three results, one per line\n','print(6&3);print(6|3);print(6^3)',['']),
+C(0,'Three basic operators','Read two integers `a` and `b` (one per line). Print `a & b`, `a | b` and `a ^ b`, each on its own line.','prog',
+ [['6\n3','2\n7\n5'],['12\n10','8\n14\n6']],'a = int(input())\nb = int(input())\n# Print AND, OR and XOR\n','a=int(input());b=int(input());print(a&b);print(a|b);print(a^b)',['6\n3','0\n0','255\n15','-5\n3','1023\n1024','100\n7']),
+C(0,'Left and right shift','Read an integer `n`. Print `n << 1` on the first line and `n >> 1` on the second. Right shift of a negative number rounds toward negative infinity.','prog',
+ [['5','10\n2'],['-5','-10\n-3']],'n = int(input())\n# Print n << 1, then n >> 1\n','n=int(input());print(n<<1);print(n>>1)',['5','-5','0','1','-1','1024','-7']),
+C(0,'Predict and verify','Given `a = 12` and `b = 10` (already set in the starter), print `a & b`, `a | b`, `a ^ b` and `a >> 2`, one per line. Predict each result in comments first (12 = 1100, 10 = 1010).','prog',
+ [['','8\n14\n6\n3']],'a = 12\nb = 10\n# Predict first, then print four lines\n','a=12;b=10;print(a&b);print(a|b);print(a^b);print(a>>2)',['']),
+C(0,'Odd or even without modulo','Write `is_odd(n)` that returns `True` if n is odd, else `False`, using a bitwise operator. The `%` operator and `divmod` are not allowed. It must return a real bool and work for negative numbers.','fn',
+ [['is_odd(7)','True'],['is_odd(10)','False']],'def is_odd(n):\n    # Use a bitwise operator\n    pass\n','def is_odd(n): return (n&1)==1',['is_odd(7)','is_odd(10)','is_odd(0)','is_odd(-3)','is_odd(-4)','is_odd(1)','is_odd(10**12+1)'],{ban:/%|divmod/}),
+C(1,'Power of two','Write `is_power_of_two(n)` returning `True` when n is a power of two (1, 2, 4, 8, …) and `False` otherwise, including for zero and negative numbers. Hint: a power of two has exactly one 1-bit.','fn',
+ [['is_power_of_two(8)','True'],['is_power_of_two(12)','False'],['is_power_of_two(0)','False']],'def is_power_of_two(n):\n    # Handle zero and negative values\n    pass\n','def is_power_of_two(n): return n>0 and (n&(n-1))==0',['0']),
+C(1,'Swap using XOR','Read integers `a` and `b` (one per line). Swap them using XOR, without a temporary variable or tuple assignment, then print them on one line separated by a space. (Ordinary tuple swap `a, b = b, a` is clearer in real code – mention this in a comment.)','prog',
+ [['3\n7','7 3'],['-5\n10','10 -5']],'a = int(input())\nb = int(input())\n# Swap using ^\n\nprint(a, b)\n','a=int(input());b=int(input());a^=b;b^=a;a^=b;print(a,b)',['3\n7','-5\n10','0\n9','5\n5','100\n-100'],{need:/\^/}),
+C(1,'Find the single number','Every value in the list appears twice except one. Write `single_number(nums)` that returns the unique value using XOR. Dictionaries, sets, `Counter` and `.count` are not allowed.','fn',
+ [['single_number([4, 1, 2, 1, 2])','4'],['single_number([7])','7']],'def single_number(nums):\n    pass\n','def single_number(nums):\n    r=0\n    for v in nums: r^=v\n    return r',['[4,1,2,1,2]','[2,2,1]','[7]','[-1,3,3]','[0,5,5]','[9,8,9,8,100000]'].map(v=>`single_number(${v})`),{ban:/set\(|dict\(|\{|Counter|\.count/,need:/\^/}),
+C(1,'Count set bits','Write `count_set_bits(n)` returning the number of 1-bits in a non-negative integer. `bin()`, `str()`, `format()`, f-strings and `.count` are not allowed.','fn',
+ [['count_set_bits(13)','3'],['count_set_bits(255)','8'],['count_set_bits(0)','0']],'def count_set_bits(n):\n    pass\n','def count_set_bits(n):\n    c=0\n    while n: c+=n&1;n>>=1\n    return c',[0,1,2,7,13,255,1023,'2**40-1','2**64'].map(v=>`count_set_bits(${v})`),{ban:/bin\(|str\(|format\(|f["\']|\.count/}),
+C(1,'Bit masks','Write `is_bit_set(n, k)`, `set_bit(n, k)` and `clear_bit(n, k)` for bit position k (0 = least-significant). `is_bit_set` returns a bool; the others return the new integer.','fn',
+ [['(is_bit_set(10, 1), set_bit(10, 1), clear_bit(10, 1))','(True, 10, 8)'],['(is_bit_set(10, 2), set_bit(10, 2), clear_bit(10, 2))','(False, 14, 10)']],'def is_bit_set(n, k):\n    pass\n\ndef set_bit(n, k):\n    pass\n\ndef clear_bit(n, k):\n    pass\n','def is_bit_set(n,k): return (n>>k)&1==1\ndef set_bit(n,k): return n|(1<<k)\ndef clear_bit(n,k): return n&~(1<<k)',[[10,1],[10,2],[0,0],[255,7],[255,8],[1,0],[64,6],[5,31]].map(([n,k])=>`(is_bit_set(${n},${k}), set_bit(${n},${k}), clear_bit(${n},${k}))`)),
+C(2,'Find the differing bit','Given integers `a` and `b`, return the position (from 0) of their only differing bit. Return `None` if they differ in zero bits or in more than one bit.','fn',
+ [['differing_bit(4, 5)','0'],['differing_bit(4, 7)','None'],['differing_bit(8, 8)','None']],'def differing_bit(a, b):\n    pass\n','def differing_bit(a,b):\n    x=a^b\n    return x.bit_length()-1 if x and x&(x-1)==0 else None',[[4,5],[4,7],[8,8],[0,1],[16,0],[5,1],[255,127],[6,3],[1023,511]].map(([a,b])=>`differing_bit(${a},${b})`)),
+C(2,'Next power of two','For `n >= 0`, return the smallest power of two strictly greater than n. If n is already a power of two, return the next one. Defined result: `next_power_of_two(0)` returns 1.','fn',
+ [['next_power_of_two(9)','16'],['next_power_of_two(8)','16'],['next_power_of_two(0)','1']],'def next_power_of_two(n):\n    pass\n','def next_power_of_two(n): return 1<<n.bit_length()',[0,1,2,3,4,5,8,9,1023,1024,'10**6'].map(v=>`next_power_of_two(${v})`)),
+C(2,'Find the missing number','`nums` holds distinct integers from 0 to n (n = len(nums)) with exactly one missing. Return the missing value using XOR in O(n) time and O(1) extra space. `sum`, `set` and `sorted` are not allowed.','fn',
+ [['missing_number([0, 1, 3, 4])','2'],['missing_number([1, 2, 3])','0'],['missing_number([0, 1, 2, 3])','4']],'def missing_number(nums):\n    pass\n','def missing_number(nums):\n    r=len(nums)\n    for i,x in enumerate(nums): r^=i^x\n    return r',['[0,1,3,4]','[1,2,3]','[0,1,2,3]','[0]','[1]','[3,0,1]','[9,6,4,2,3,5,7,0,1]','[0,2]'].map(v=>`missing_number(${v})`),{ban:/sum\(|set\(|sorted\(/,need:/\^/}),
+C(2,'Reverse the lowest k bits','Write `reverse_low_k_bits(n, k)` that reverses the order of the lowest k bits of n and leaves higher bits unchanged. Raise `ValueError` if k < 0. Explain your approach in comments.','fn',
+ [['reverse_low_k_bits(0b1011, 3)','14'],['reverse_low_k_bits(1, 4)','8'],['reverse_low_k_bits(5, -1)','raises ValueError']],'def reverse_low_k_bits(n, k):\n    # Explain your approach here\n    pass\n','def reverse_low_k_bits(n,k):\n    if k<0: raise ValueError("k")\n    r=0\n    for i in range(k): r=(r<<1)|((n>>i)&1)\n    return (n>>k<<k)|r',[[13,3],[11,3],[1,4],[0,5],[255,0],[255,1],[53,6],[1027,4],[5,-1]].map(([n,k])=>`_t(lambda: reverse_low_k_bits(${n},${k}))`)),
+C(2,'Two unique numbers','Exactly two distinct values occur once; every other value occurs twice. Return both unique values as a sorted list `[a, b]`, in O(n) time and O(1) extra space using XOR.','fn',
+ [['two_unique([1, 2, 1, 3, 2, 5])','[3, 5]'],['two_unique([5, 6])','[5, 6]']],'def two_unique(nums):\n    pass\n','def two_unique(nums):\n    x=0\n    for v in nums: x^=v\n    low=x&-x;a=b=0\n    for v in nums:\n        if v&low: a^=v\n        else: b^=v\n    return sorted([a,b])',['[1,2,1,3,2,5]','[0,1]','[4,4,-2,7]','[10,20,10,30,20,40]','[1,1,2,2,3,100]','[5,6]','[9,9,8,8,7,7,1,2]'].map(v=>`two_unique(${v})`),{need:/\^/})
 ];
-const tasks=[
- {n:6,l:"Beginner",title:"Evaluate AND, OR and XOR",desc:"Evaluate these expressions by hand, then verify using Python: 6 & 3, 6 | 3, and 6 ^ 3. Print all three results."},
- {n:7,l:"Beginner",title:"Three basic operators",desc:"Write a program that reads two integers and prints their bitwise AND, OR and XOR, each on a separate line."},
- {n:8,l:"Beginner",title:"Left and right shift",desc:"Read an integer n and print n << 1 and n >> 1. Test with a positive and a negative integer."},
- {n:9,l:"Beginner",title:"Predict and verify",desc:"Given a = 12 and b = 10, print a & b, a | b, a ^ b, and a >> 2. Add comments showing your predictions."},
- {n:10,l:"Beginner",title:"Odd or even without modulo",desc:"Write is_odd(n) that returns True if n is odd and False otherwise. Use a bitwise operator, not the % operator."},
- {n:11,l:"Intermediate",title:"Power of two",desc:"Write is_power_of_two(n). Return False for zero and negative inputs. Use bitwise operations."},
- {n:12,l:"Intermediate",title:"Swap using XOR",desc:"Read two integers and swap them using XOR without a temporary variable. Print the values after swapping. Add a comment about why ordinary Python assignment is often clearer."},
- {n:13,l:"Intermediate",title:"Find the single number",desc:"Every list value appears twice except one. Find the unique value using XOR. Example: [4, 1, 2, 1, 2] → 4. Do not use a dictionary or set."},
- {n:14,l:"Intermediate",title:"Count set bits",desc:"Write a function that counts the number of 1-bits in a non-negative integer. Do not use bin() or convert the number to a string."},
- {n:15,l:"Intermediate",title:"Bit masks",desc:"For a number n and bit position k (0 is the least-significant bit), write functions to check, set and clear bit k. Demonstrate each function."},
- {n:16,l:"Advanced",title:"Find the differing bit",desc:"Given integers a and b, return the position (starting at 0) of their only differing bit. Return None if they differ in zero or more than one bit."},
- {n:17,l:"Advanced",title:"Next power of two",desc:"For n >= 0, return the next greater power of 2. If n is already a power of 2, return the following power. Define the result for n = 0."},
- {n:18,l:"Advanced",title:"Find the missing number",desc:"A list contains distinct integers from 0 to n with one number missing. Find it using XOR in O(n) time and O(1) extra space."},
- {n:19,l:"Advanced",title:"Reverse the lowest k bits",desc:"Write a function that reverses the order of the lowest k bits of non-negative n, leaving all higher bits unchanged. Validate k >= 0 and explain the approach in comments."},
- {n:20,l:"Advanced",title:"Two unique numbers",desc:"Exactly two distinct values occur once and every other value occurs twice. Find both unique values in O(n) time and O(1) extra space, using bitwise operations. Return them sorted."}
-];
-const starter={
-6:"# Verify the three expressions\nprint(6 & 3)\nprint(6 | 3)\nprint(6 ^ 3)",
-7:"a = int(input('First integer: '))\nb = int(input('Second integer: '))\n# Print AND, OR and XOR",
-8:"n = int(input('Enter an integer: '))\n# Print left shift and right shift",
-9:"a = 12\nb = 10\n# Predict first, then print each expression",
-10:"def is_odd(n):\n    # Use a bitwise operator\n    pass\n\nprint(is_odd(7))\nprint(is_odd(10))",
-11:"def is_power_of_two(n):\n    # Handle zero and negative values\n    pass\n\nfor n in [0, 1, 2, 3, 8, 12, -4]:\n    print(n, is_power_of_two(n))",
-12:"a = int(input('a: '))\nb = int(input('b: '))\n# Swap using XOR\n\nprint(a, b)",
-13:"nums = [4, 1, 2, 1, 2]\n# Find the unique number using XOR",
-14:"def count_set_bits(n):\n    # Do not use bin() or strings\n    pass\n\nprint(count_set_bits(13))",
-15:"def is_bit_set(n, k):\n    pass\n\ndef set_bit(n, k):\n    pass\n\ndef clear_bit(n, k):\n    pass\n\nn, k = 10, 1\nprint(is_bit_set(n, k), set_bit(n, k), clear_bit(n, k))",
-16:"def differing_bit(a, b):\n    pass\n\nprint(differing_bit(4, 5))\nprint(differing_bit(4, 7))\nprint(differing_bit(8, 8))",
-17:"def next_power_of_two(n):\n    # Decide what to return for n = 0\n    pass\n\nfor n in [0, 1, 2, 3, 8, 9]:\n    print(n, next_power_of_two(n))",
-18:"def missing_number(nums):\n    pass\n\nprint(missing_number([0, 1, 3, 4])) # 2",
-19:"def reverse_low_k_bits(n, k):\n    pass\n\nprint(reverse_low_k_bits(0b1101, 3))",
-20:"def two_unique(nums):\n    pass\n\nprint(two_unique([1, 2, 1, 3, 2, 5])) # [3, 5]"
-};
-const answers={};
-let current=0,remaining=3600,submitted=false,pyodide=null,pyLoading=null,timerInt=null;
-function render(){
- const m=document.getElementById('mcqs'),c=document.getElementById('coding'),nav=document.getElementById('navigator');
- m.innerHTML=mcqData.map((x,i)=>`<article class="q" id="q${i+1}" data-q="${i+1}"><div class="qtop"><span class="qnum">QUESTION ${String(i+1).padStart(2,'0')} · MCQ</span><span class="level">1 mark</span></div><h3>${x.q}</h3><div class="options">${x.opts.map((o,j)=>`<label class="option"><input type="radio" name="mcq${i}" value="${j}" onchange="setMCQ(${i},${j})"><span><b>${String.fromCharCode(65+j)}.</b> <code>${o}</code></span></label>`).join('')}</div></article>`).join('');
- c.innerHTML=tasks.map(t=>`<article class="q" id="q${t.n}" data-q="${t.n}"><div class="qtop"><span class="qnum">QUESTION ${String(t.n).padStart(2,'0')} · CODE</span><span class="level ${t.l==='Intermediate'?'inter':t.l==='Advanced'?'adv':''}">${t.l}</span></div><h3>${t.title}</h3><p style="margin:0;color:#526078">${t.desc}</p><div class="codebox"><div class="codebar"><span>PYTHON 3 · EDITOR</span><span>Q${t.n}</span></div><textarea class="editor" id="code${t.n}" spellcheck="false" aria-label="Python code for question ${t.n}" oninput="setCode(${t.n},this.value)">${escapeHtml(starter[t.n]||'# Write your solution here')}</textarea><div class="runrow"><button class="btn-teal" onclick="runCode(${t.n})">▶ Run code</button><button class="btn-soft" onclick="resetCode(${t.n})">Reset starter</button><button class="btn-primary" onclick="markCode(${t.n})">✓ Mark attempted</button></div><div class="output" id="out${t.n}"></div></div><textarea class="answer" id="note${t.n}" placeholder="Optional explanation / notes for your solution…" oninput="setNote(${t.n},this.value)" style="margin-top:10px"></textarea></article>`).join('');
- nav.innerHTML=Array.from({length:20},(_,i)=>`<button class="navbtn" id="nav${i+1}" onclick="jumpTo(${i})">${i+1}</button>`).join('');
- restore();updateProgress();updateNav();
-}
-function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
-function setMCQ(i,v){answers['m'+i]=v;updateProgress();updateNav();saveNow(false)}
-function setCode(n,v){answers['c'+n]=v;updateProgress();updateNav();saveNow(false)}
-function setNote(n,v){answers['n'+n]=v;saveNow(false)}
-function markCode(n){answers['attempt'+n]=true;updateProgress();updateNav();const b=document.querySelector(`#q${n} .runrow button:nth-child(3)`);b.textContent='✓ Attempted';b.classList.add('btn-teal')}
-function attempted(n){if(n<=5)return answers['m'+(n-1)]!==undefined;return !!answers['attempt'+n]||((answers['c'+n]||'').trim()!==''&&(answers['c'+n]||'').trim()!==(starter[n]||'').trim())}
-function updateProgress(){let count=0;for(let i=1;i<=20;i++)if(attempted(i))count++;document.getElementById('answered').textContent=count;document.getElementById('progresslabel').textContent=`${count} of 20 attempted`;document.getElementById('progressbar').style.width=(count/20*100)+'%'}
-function updateNav(){for(let i=1;i<=20;i++){const b=document.getElementById('nav'+i);if(!b)continue;b.classList.toggle('done',attempted(i));b.classList.toggle('current',i===current+1)}}
-function jumpTo(i){current=Math.max(0,Math.min(19,i));const el=document.getElementById('q'+(current+1));el.scrollIntoView({behavior:'smooth',block:'start'});updateNav()}
-function saveNow(show=true){try{localStorage.setItem('bitwiseLabAnswers',JSON.stringify(answers));localStorage.setItem('bitwiseLabRemaining',String(remaining));if(show)alert('Progress saved in this browser.')}catch(e){if(show)alert('Could not save locally in this browser.')} }
-function restore(){try{const old=JSON.parse(localStorage.getItem('bitwiseLabAnswers')||'{}');Object.assign(answers,old);const r=Number(localStorage.getItem('bitwiseLabRemaining'));if(r>0&&r<=3600)remaining=r;
- mcqData.forEach((x,i)=>{if(answers['m'+i]!==undefined){const el=document.querySelector(`input[name="mcq${i}"][value="${answers['m'+i]}"]`);if(el)el.checked=true}});
- tasks.forEach(t=>{const code=document.getElementById('code'+t.n),note=document.getElementById('note'+t.n);if(answers['c'+t.n]!==undefined)code.value=answers['c'+t.n];if(answers['n'+t.n]!==undefined)note.value=answers['n'+t.n];if(answers['attempt'+t.n]){const b=document.querySelector(`#q${t.n} .runrow button:nth-child(3)`);b.textContent='✓ Attempted';b.classList.add('btn-teal')}})
- }catch(e){}}
-async function ensurePython(){if(pyodide)return pyodide;if(pyLoading)return pyLoading;pyLoading=(async()=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js';document.head.appendChild(s);await new Promise((res,rej)=>{s.onload=res;s.onerror=()=>rej(new Error('Could not load Python runtime. Check your internet connection and try again.'))});pyodide=await loadPyodide();return pyodide})();return pyLoading}
-async function runCode(n){const out=document.getElementById('out'+n);out.classList.add('show');out.textContent='Loading Python runtime…';const src=document.getElementById('code'+n).value;try{const py=await ensurePython();let inputQueue=[];const inputRegex=/input\((?:[^)]*)\)/g;let m;while((m=inputRegex.exec(src))!==null){const promptMatch=m[0].match(/input\((['"])(.*?)\1\)/);const prompt=promptMatch?promptMatch[2]:'Input required';const val=window.prompt('Python input: '+prompt);if(val===null){out.textContent='Run cancelled.';return}inputQueue.push(val)}
- let idx=0;py.setStdin({stdin:()=>idx<inputQueue.length?inputQueue[idx++]:null});let output='';py.setStdout({batched:(s)=>{output+=s+'\n'}});py.setStderr({batched:(s)=>{output+='ERROR: '+s+'\n'}});await py.runPythonAsync(src);out.textContent=output.trimEnd()||'(Code ran successfully with no output.)';markCode(n)
- }catch(e){out.textContent='Runtime / code error:\n'+(e.message||String(e));}}
-function resetCode(n){document.getElementById('code'+n).value=starter[n]||'# Write your solution here';answers['c'+n]=document.getElementById('code'+n).value;delete answers['attempt'+n];const b=document.querySelector(`#q${n} .runrow button:nth-child(3)`);b.textContent='✓ Mark attempted';b.classList.remove('btn-teal');const o=document.getElementById('out'+n);o.classList.remove('show');updateProgress();updateNav();saveNow(false)}
-function submitExam(){if(submitted)return;if(!confirm('Submit your exam now? Your MCQs will be auto-graded and your code answers will be included for review.'))return;submitted=true;clearInterval(timerInt);let score=0,review='';mcqData.forEach((x,i)=>{const v=answers['m'+i];const ok=Number(v)===x.ans;if(ok)score++;review+=`<div class="reviewitem"><b>Q${i+1}: ${ok?'Correct ✓':'Incorrect ✕'}</b><br>Your answer: ${v===undefined?'Not answered':String.fromCharCode(65+Number(v))+'. '+x.opts[Number(v)]}<br>Correct answer: ${String.fromCharCode(65+x.ans)}. ${x.opts[x.ans]}<br><span style="color:#59677e">${x.why}</span></div>`});const codeCount=tasks.filter(t=>(answers['c'+t.n]||'').trim()!==''&&(answers['c'+t.n]||'').trim()!==(starter[t.n]||'').trim()).length;document.getElementById('score').textContent=score+' / 5';document.getElementById('scoretext').textContent=`MCQ score: ${score}/5 (${score*20}%). Coding responses found: ${codeCount}/15. Coding is not auto-graded; review the submitted code yourself or with a mentor.`;document.getElementById('review').innerHTML=review;document.getElementById('resultModal').classList.add('open');saveNow(false)}
-function closeResults(){document.getElementById('resultModal').classList.remove('open')}
-function downloadAnswers(){let textOut='PYTHON BITWISE CHALLENGE — SUBMISSION\n\n';mcqData.forEach((x,i)=>{const v=answers['m'+i];textOut+=`Q${i+1} MCQ: ${v===undefined?'Not answered':String.fromCharCode(65+Number(v))+'. '+x.opts[Number(v)]}\n`});tasks.forEach(t=>{textOut+=`\n\nQUESTION ${t.n}: ${t.title}\n${t.desc}\n\nCODE:\n${answers['c'+t.n]||document.getElementById('code'+t.n).value}\n\nNOTES:\n${answers['n'+t.n]||''}\n`});const blob=new Blob([textOut],{type:'text/plain'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='bitwise_lab_submission.txt';a.click();URL.revokeObjectURL(url)}
-function tick(){const m=Math.floor(remaining/60),s=remaining%60;document.getElementById('timer').textContent='⏱ '+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(remaining<=300)document.getElementById('timer').style.color='#ffb4b4';if(remaining<=0){clearInterval(timerInt);alert('Time is up. Please submit your exam.');return}remaining--;try{localStorage.setItem('bitwiseLabRemaining',String(remaining))}catch(e){}}
-render();tick();timerInt=setInterval(tick,1000);
+Q.forEach(q=>{if(q.t==='c')q.tests=q.tests.map(String)});
+Q[10].tests=[0,1,2,3,8,12,-4,1024,1023,'2**40','2**40+1',-1].map(v=>`is_power_of_two(${v})`);
+
+/* ---------- Python runner (Web Worker + Pyodide, 5 s limit per run) ---------- */
+const DRV=String.raw`
+import sys,io,json,builtins,traceback
+def run_json(a):
+    m=json.loads(a);return run(m['src'],m['stdin'],m['expr'])
+def _t(f):
+    try: return f()
+    except Exception as e: return 'raises '+type(e).__name__
+def run(src,stdin,expr):
+    lines=iter(stdin.split('\n') if stdin else [])
+    def _inp(p=''):
+        try: return next(lines)
+        except StopIteration: raise EOFError('input() called but there is no more input')
+    oi,oo=builtins.input,sys.stdout
+    builtins.input=_inp;buf=io.StringIO();sys.stdout=buf
+    g={'__name__':'__main__','_t':_t}
+    try:
+        exec(compile(src,'<solution>','exec'),g)
+        res=repr(eval(expr,g)) if expr else None
+        return json.dumps({'ok':True,'out':buf.getvalue(),'res':res})
+    except BaseException as e:
+        fr=[f for f in traceback.extract_tb(e.__traceback__) if f.filename=='<solution>']
+        ln=fr[-1].lineno if fr else getattr(e,'lineno',None)
+        return json.dumps({'ok':False,'out':buf.getvalue(),'err':type(e).__name__+': '+str(e)+(' (line %s)'%ln if ln else '')})
+    finally:
+        builtins.input,sys.stdout=oi,oo
+`;
+const WSRC=`const D=${JSON.stringify(DRV)};let py;
+(async()=>{try{importScripts('https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js');py=await loadPyodide();py.runPython(D);postMessage({ready:true})}catch(e){postMessage({ready:false,err:'Python runtime could not load. Check your internet connection and reload.'})}})();
+onmessage=e=>{py.globals.set('_a',JSON.stringify(e.data));postMessage({id:e.data.id,r:py.runPython('run_json(_a)')})};`;
+let W=null,seq=0;
+function spawn(){const w=new Worker(URL.createObjectURL(new Blob([WSRC],{type:'text/javascript'})));w.rdy=new Promise(r=>{w.onmessage=e=>r(e.data)});W=w}
+async function exec(src,stdin,expr,ms=5000){
+ if(!W)spawn();const w=W,st=await w.rdy;if(!st.ready){W=null;return{ok:false,err:st.err,out:''}}
+ return new Promise(res=>{const id=++seq;
+  const to=setTimeout(()=>{w.terminate();if(W===w)W=null;res({ok:false,out:'',err:'Time limit exceeded (5 s) – check for an infinite loop.',tle:true})},ms);
+  w.onmessage=e=>{if(e.data.id!==id)return;clearTimeout(to);res(JSON.parse(e.data.r))};
+  w.postMessage({id,src,stdin,expr})})}
+const norm=s=>(s||'').split('\n').map(x=>x.replace(/\s+$/,'')).join('\n').replace(/\n+$/,'');
+
+/* ---------- State ---------- */
+let S=load()||null,timerH=null,busy=false,cur=0;
+function load(){try{return JSON.parse(localStorage.getItem(KEY))}catch(e){return null}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function toast(m){const t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display='none',3500)}
+const attempted=i=>{const q=Q[i];return q.t==='m'?S.mcq[i]!==undefined:(S.ans[i]!==undefined&&S.ans[i].trim()!==''&&S.ans[i].trim()!==q.starter.trim())};
+const count=()=>Q.reduce((n,_,i)=>n+(attempted(i)?1:0),0);
+
+/* ---------- Screens ---------- */
+function start(){
+ $('app').innerHTML=`<div class="center"><div class="card"><h1>Python Bitwise Challenge</h1><p style="color:var(--muted);margin:0">20 questions · 35 marks · 60 minutes</p>
+ <label for="nm">Full name</label><input type="text" id="nm" maxlength="60" autocomplete="off"><label for="rid">Roll / candidate ID</label><input type="text" id="rid" maxlength="30" autocomplete="off">
+ <h3 style="margin:20px 0 4px">Instructions</h3><ul class="rules"><li>Section A: 5 MCQs (1 mark each). Section B: 15 coding tasks worth 1, 2 or 3 marks by level; marks are proportional to hidden test cases passed.</li><li>Code runs as Python 3 in your browser. Each run has a 5-second limit. Use <b>Test examples</b> to check the visible samples; your answer is graded on additional hidden tests.</li><li>Stay in the exam tab and full screen. Switching tabs or leaving full screen is recorded; ${MAXV} violations auto-submit the exam. Pasting into the editor is disabled.</li><li>Your work saves automatically and the timer continues if you reload. The exam auto-submits when time ends.</li></ul>
+ <label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="agree"> I have read the instructions and will work on my own.</label><div class="err" id="serr"></div>
+ <button class="b1" id="go" style="margin-top:8px;padding:12px 22px">Start exam</button></div></div>`;
+ $('go').onclick=()=>{const n=$('nm').value.trim(),r=$('rid').value.trim();
+  if(!n||!r)return $('serr').textContent='Enter your name and ID to continue.';
+  if(!$('agree').checked)return $('serr').textContent='Tick the box to confirm the instructions.';
+  S={cand:{n,r},end:Date.now()+DUR,mcq:{},ans:{},flag:{},viol:0,log:[],done:false,res:null};save();
+  try{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}catch(e){}
+  run()}}
+function run(){
+ $('who').textContent=S.cand.n+' · '+S.cand.r;
+ if(S.done)return result();
+ shell();tick();timerH=setInterval(tick,1000);spawn()}
+function shell(){
+ $('app').innerHTML=`<div class="layout"><main class="card" id="qcard"></main><aside class="side"><div class="card"><h3>Progress</h3><div class="bar"><i id="pb"></i></div><div id="pl" style="font-size:13px"></div><div class="nav" id="nav" style="margin-top:10px"></div><div class="legend">Green = attempted · Orange dot = flagged · Blue outline = current</div></div><div class="card"><h3>Integrity log</h3><div style="font-size:13px" id="vl"></div><button class="b4" id="sub" style="width:100%;margin-top:10px;padding:11px">Submit exam</button></div></aside></div>`;
+ $('nav').innerHTML=Q.map((_,i)=>`<button class="nb" id="nb${i}" data-i="${i}" aria-label="Question ${i+1}">${i+1}</button>`).join('');
+ $('nav').onclick=e=>{const b=e.target.closest('.nb');if(b)go(+b.dataset.i)};
+ $('sub').onclick=confirmSubmit;go(0)}
+function side(){
+ Q.forEach((_,i)=>{const b=$('nb'+i);b.classList.toggle('done',attempted(i));b.classList.toggle('cur',i===cur);b.classList.toggle('flag',!!S.flag[i])});
+ const n=count();$('pb').style.width=n/20*100+'%';$('pl').textContent=n+' of 20 attempted';
+ $('vl').textContent=S.viol+' of '+MAXV+' violations recorded'}
+function go(i){cur=Math.max(0,Math.min(19,i));const q=Q[i=cur],c=$('qcard');
+ const head=`<div class="qhead"><div><b>Question ${i+1}</b><span class="tag ${q.t==='c'?LC[q.lv]:''}">${q.t==='m'?'MCQ · 1 mark':L[q.lv]+' · '+q.m+(q.m>1?' marks':' mark')}</span></div><button class="b5" id="fl">${S.flag[i]?'Unflag':'Flag for review'}</button></div>`;
+ const foot=`<div class="foot"><button class="b2" id="pv" ${i?'':'disabled'}>Previous</button><button class="b1" id="nx">${i<19?'Save and next':'Review and submit'}</button></div>`;
+ if(q.t==='m'){
+  c.innerHTML=head+`<div class="qbody"><h2>${esc(q.q)}</h2><div class="opts" role="radiogroup">${q.o.map((o,j)=>`<label class="opt ${S.mcq[i]===j?'sel':''}"><input type="radio" name="o" value="${j}" ${S.mcq[i]===j?'checked':''}> <b>${'ABCD'[j]}.</b> <code>${esc(o)}</code></label>`).join('')}</div><details><summary>Concept and example</summary><p style="margin:8px 0 0">${fmt(q.c)}</p></details></div>`+foot;
+  c.querySelectorAll('input').forEach(r=>r.onchange=()=>{S.mcq[i]=+r.value;save();go(i)})}
+ else{
+  const ex=q.ex.map((e,k)=>q.mode==='prog'?`<div class="ex"><div class="l">Example ${k+1}</div><div class="l" style="background:#fff;font-weight:600">Input</div><pre>${esc(e[0]||'(none)')}</pre><div class="l" style="background:#fff;font-weight:600">Output</div><pre>${esc(e[1])}</pre></div>`:`<div class="ex"><div class="l">Example ${k+1}</div><pre>${esc(e[0])}\n→ ${esc(e[1])}</pre></div>`).join('');
+  c.innerHTML=head+`<div class="qbody"><div class="split"><div><h2>${esc(q.title)}</h2><p style="margin:0">${fmt(q.desc)}</p><h3 style="font-size:14px;margin:16px 0 0">Examples</h3>${ex}<p style="font-size:13px;color:var(--muted)">Grading uses extra hidden test cases, including edge cases. Python 3 only.</p></div>
+  <div><div class="edwrap"><div class="edbar"><span>Python 3 · solution.py</span><span id="pos">Ln 1, Col 1</span></div><div class="ed" id="ed"><textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="Python code editor"></textarea><div class="sug" id="sug"></div></div>
+  ${q.mode==='prog'?`<textarea class="stdin" id="stdin" placeholder="Custom input for Run (one value per line)" aria-label="Program input"></textarea>`:''}
+  <div class="runrow"><button class="b1" id="rn">▶ Run</button><button class="b3" id="te">Test examples</button><button class="b2" id="rs">Reset</button></div><div class="out" id="out" aria-live="polite"></div></div></div></div></div>`+foot;
+  const ta=$('code');ta.value=S.ans[i]!==undefined?S.ans[i]:q.starter;if(q.mode==='prog')$('stdin').value=q.ex[0][0];
+  editor(ta,i);$('rn').onclick=()=>runIt(i,false);$('te').onclick=()=>runIt(i,true);
+  $('rs').onclick=()=>{if(confirm('Reset this answer to the starter code?')){delete S.ans[i];save();go(i)}}}
+ $('fl').onclick=()=>{S.flag[i]=!S.flag[i];save();go(i)};$('pv').onclick=()=>go(i-1);$('nx').onclick=()=>i<19?go(i+1):confirmSubmit();side()}
+async function runIt(i,samples){if(busy)return;const q=Q[i],o=$('out'),src=$('code').value;busy=true;$('rn').disabled=$('te').disabled=true;o.className='out show';o.textContent='Running…';
+ try{
+  if(!samples){const r=await exec(src,q.mode==='prog'?$('stdin').value:'',null);o.innerHTML=esc(r.out||'')+(r.err?`<span class="bad">\n${esc(r.err)}</span>`:'')||'(no output)'}
+  else{let h='';for(let k=0;k<q.ex.length;k++){const e=q.ex[k],r=await exec(src,q.mode==='prog'?e[0]:'',q.mode==='fn'?(e[1].startsWith('raises')?`_t(lambda: ${e[0]})`:e[0]):null);
+   const exp=q.mode==='fn'?(e[1].startsWith('raises')?`'${e[1]}'`:e[1]):norm(e[1]),got=r.ok?(q.mode==='fn'?r.res:norm(r.out)):r.err,ok=r.ok&&got===exp;
+   h+=ok?`✓ Example ${k+1} passed\n`:`<span class="bad">✗ Example ${k+1}: expected ${esc(e[1])}, got ${esc(got)}</span>\n`}o.innerHTML=h}
+ }finally{busy=false;$('rn').disabled=$('te').disabled=false}}
+
+/* ---------- Editor with VS Code-style suggestions ---------- */
+const KW='False None True and as assert break class continue def del elif else except finally for from global if import in is lambda nonlocal not or pass raise return try while with yield'.split(' ');
+const BI='abs all any bin bool chr dict divmod enumerate filter float format hex input int isinstance len list map max min oct ord pow print range repr reversed round set sorted str sum tuple zip bit_length bit_count append'.split(' ');
+const SN={def:'def name(args):\n    ',for:'for i in range(n):\n    ',while:'while condition:\n    ',if:'if condition:\n    ',ifelse:'if condition:\n    \nelse:\n    ',try:'try:\n    \nexcept Exception as e:\n    '};
+function editor(ta,qi){const sug=$('sug');let items=[],sel=0;
+ const pos=()=>{const v=ta.value.slice(0,ta.selectionStart).split('\n');$('pos').textContent='Ln '+v.length+', Col '+(v[v.length-1].length+1)};
+ const ins=(t,s=ta.selectionStart,e=ta.selectionEnd,c)=>{ta.setRangeText(t,s,e,'end');if(c!==undefined)ta.selectionStart=ta.selectionEnd=c;ta.dispatchEvent(new Event('input'))};
+ const word=()=>{const m=/[A-Za-z_]\w*$/.exec(ta.value.slice(0,ta.selectionStart));return m?m[0]:''};
+ const hide=()=>{sug.style.display='none';items=[]};
+ function show(){const w=word();if(!w)return hide();
+  const ids=[...new Set(ta.value.match(/[A-Za-z_]\w*/g)||[])].filter(x=>x!==w);
+  const all=[...Object.keys(SN).map(k=>[k,SN[k],'snippet']),...KW.map(k=>[k,k,'keyword']),...BI.map(k=>[k,k,'builtin']),...ids.map(k=>[k,k,'name'])];
+  const seen=new Set();items=all.filter(a=>a[0].startsWith(w)&&a[0]!==w&&!seen.has(a[0]+a[2])&&seen.add(a[0]+a[2])).slice(0,7);if(!items.length)return hide();
+  sel=0;draw();const d=document.createElement('div'),s=getComputedStyle(ta);['fontFamily','fontSize','lineHeight','padding','tabSize'].forEach(p=>d.style[p]=s[p]);
+  d.style.cssText+=';position:absolute;visibility:hidden;white-space:pre;top:0;left:0';d.textContent=ta.value.slice(0,ta.selectionStart);const sp=document.createElement('span');sp.textContent='.';d.appendChild(sp);ta.parentNode.appendChild(d);
+  sug.style.left=Math.min(sp.offsetLeft-ta.scrollLeft,ta.clientWidth-200)+'px';sug.style.top=(sp.offsetTop-ta.scrollTop+parseFloat(s.lineHeight)+2)+'px';d.remove();sug.style.display='block'}
+ function draw(){sug.innerHTML=items.map((a,k)=>`<div class="${k===sel?'on':''}" data-k="${k}"><span>${esc(a[0])}</span><small>${a[2]}</small></div>`).join('')}
+ function accept(){const a=items[sel],w=word();hide();ins(a[1],ta.selectionStart-w.length,ta.selectionStart)}
+ sug.onmousedown=e=>{e.preventDefault();const d=e.target.closest('[data-k]');if(d){sel=+d.dataset.k;accept()}};
+ ta.addEventListener('input',()=>{S.ans[qi]=ta.value;save();pos();show();side()});
+ ta.addEventListener('click',()=>{pos();hide()});ta.addEventListener('keyup',pos);ta.addEventListener('blur',hide);ta.addEventListener('scroll',hide);
+ ['paste','drop'].forEach(ev=>ta.addEventListener(ev,e=>{e.preventDefault();toast('Pasting and dropping text is disabled during the exam.')}));
+ ta.addEventListener('keydown',e=>{const s=ta.selectionStart,v=ta.value;
+  if(items.length){if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();sel=(sel+(e.key==='ArrowDown'?1:items.length-1))%items.length;return draw()}
+   if(e.key==='Enter'||e.key==='Tab'){e.preventDefault();return accept()}if(e.key==='Escape'){e.preventDefault();return hide()}}
+  if(e.ctrlKey||e.metaKey)return;
+  if(e.key==='Tab'){e.preventDefault();if(e.shiftKey){const ls=v.lastIndexOf('\n',s-1)+1,m=/^ {1,4}/.exec(v.slice(ls));if(m){ta.setRangeText('',ls,ls+m[0].length,'end');ta.selectionStart=ta.selectionEnd=Math.max(ls,s-m[0].length);ta.dispatchEvent(new Event('input'))}}else ins('    ')}
+  else if(e.key==='Enter'){e.preventDefault();const line=v.slice(v.lastIndexOf('\n',s-1)+1,s),ind=/^ */.exec(line)[0];ins('\n'+ind+(/:\s*$/.test(line)?'    ':''))}
+  else if('([{\'"'.includes(e.key)){const cl={'(':')','[':']','{':'}',"'":"'",'"':'"'}[e.key];e.preventDefault();if(ta.selectionStart!==ta.selectionEnd)return;if(v[s]===e.key&&"'\"".includes(e.key))return void(ta.selectionStart=ta.selectionEnd=s+1);ins(e.key+cl,s,s,s+1)}
+  else if(')]}'.includes(e.key)&&v[s]===e.key){e.preventDefault();ta.selectionStart=ta.selectionEnd=s+1}
+  else if(e.key==='Backspace'&&s===ta.selectionEnd&&s&&({'(':')','[':']','{':'}',"'":"'",'"':'"'})[v[s-1]]===v[s]){e.preventDefault();ta.setRangeText('',s-1,s+1,'end');ta.dispatchEvent(new Event('input'))}});
+ pos()}
+
+/* ---------- Timer, integrity, submit ---------- */
+function tick(){const r=Math.max(0,S.end-Date.now()),t=$('timer');t.textContent=String(Math.floor(r/60000)).padStart(2,'0')+':'+String(Math.floor(r/1000)%60).padStart(2,'0');t.classList.toggle('low',r<=300000);if(r<=0){clearInterval(timerH);finish('Time expired')}}
+function violate(why){if(!S||S.done||busy&&why==='x')return;S.viol++;S.log.push(why+' @ '+new Date().toLocaleTimeString());save();side();
+ if(S.viol>=MAXV){toast('Violation limit reached. Submitting exam.');finish('Violation limit')}else toast(`Warning ${S.viol}/${MAXV}: ${why}. Stay in the exam window.`)}
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&S&&!S.done&&$('timer').offsetParent)violate('Left the exam tab')});
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&S&&!S.done&&$('timer').offsetParent)violate('Exited full screen')});
+document.addEventListener('contextmenu',e=>{if(S&&!S.done)e.preventDefault()});
+document.addEventListener('copy',e=>{if(S&&!S.done&&!e.target.closest('#code'))e.preventDefault()});
+window.addEventListener('beforeunload',e=>{if(S&&!S.done){e.preventDefault();e.returnValue=''}});
+function confirmSubmit(){const u=20-count();$('mbox').innerHTML=`<h2>Submit exam?</h2><p>${u?`You have <b>${u}</b> unattempted question${u>1?'s':''}. `:'All questions attempted. '}You cannot change answers after submitting.</p><button class="b4" id="y">Submit now</button> <button class="b2" id="n">Keep working</button>`;$('modal').classList.add('open');$('y').onclick=()=>finish('Submitted by candidate');$('n').onclick=()=>$('modal').classList.remove('open')}
+async function finish(reason){if(S.done||finish.on)return;finish.on=true;clearInterval(timerH);
+ $('mbox').innerHTML='<h2>Grading…</h2><p id="gp">Running hidden test cases. This can take up to a minute.</p>';$('modal').classList.add('open');
+ const rows=[];let tot=0;
+ for(let i=0;i<20;i++){const q=Q[i];$('gp').textContent=`Grading question ${i+1} of 20…`;let r;
+  if(q.t==='m'){const ok=S.mcq[i]===q.a;r={i,m:1,s:ok?1:0,p:ok?1:0,n:1,msg:S.mcq[i]===undefined?'Not answered':ok?'Correct':'Incorrect'}}
+  else r=await grade(i);rows.push(r);tot+=r.s}
+ S.done=true;S.res={rows,tot:Math.round(tot*100)/100,reason,at:new Date().toISOString()};save();finish.on=false;
+ if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});result()}
+async function grade(i){const q=Q[i],src=S.ans[i]||'',n=q.tests.length,z=m=>({i,m:q.m,s:0,p:0,n,msg:m});
+ if(!attempted(i))return z('Not attempted');const code=src.replace(/#.*$/gm,'');
+ if(q.ban&&q.ban.test(code))return z('Uses a construct the question forbids');if(q.need&&!q.need.test(code))return z('Required bitwise approach not used');
+ let p=0,err='';for(const t of q.tests){const a=q.mode==='fn'?['',t]:[t,null];
+  const e=await exec(q.ref,a[0],a[1]),g=await exec(src,a[0],a[1]);
+  if(g.ok&&e.ok&&(q.mode==='fn'?g.res===e.res:norm(g.out)===norm(e.out)))p++;else if(!err)err=g.ok?'Wrong answer on a hidden test':g.err}
+ return{i,m:q.m,s:Math.round(q.m*p/n*100)/100,p,n,msg:p===n?'All hidden tests passed':err}}
+function result(){const R=S.res,max=35;$('mbox').innerHTML=`<h2>Exam submitted</h2><p style="margin:0;color:var(--muted)">${esc(S.cand.n)} · ${esc(S.cand.r)} · ${esc(R.reason)}</p><div class="big">${R.tot} / ${max}</div><p>Integrity violations: ${S.viol}</p>
+ <table><tr><th>Q</th><th>Marks</th><th>Hidden tests</th><th>Result</th></tr>${R.rows.map(r=>`<tr><td>${r.i+1}</td><td>${r.s}/${r.m}</td><td>${r.p}/${r.n}</td><td class="${r.p===r.n?'ok':'no'}">${esc(r.msg)}</td></tr>`).join('')}</table>
+ <h3>MCQ explanations</h3>${Q.slice(0,5).map((q,i)=>`<p style="font-size:13px"><b>Q${i+1}.</b> ${esc(q.q)} → <b>${'ABCD'[q.a]}. ${esc(q.o[q.a])}</b>. ${esc(q.why)}</p>`).join('')}
+ <button class="b1" id="dl">Download report (.txt)</button> <button class="b2" id="nw">Start a new attempt</button>`;
+ $('modal').classList.add('open');$('app').innerHTML='<div class="center"><div class="card"><h1>Exam complete</h1><p>Your result is shown in the dialog. Reload this page to reopen it.</p></div></div>';
+ $('dl').onclick=()=>{let t=`BITWISE LAB RESULT\nName: ${S.cand.n}\nID: ${S.cand.r}\nScore: ${R.tot}/${max}\nViolations: ${S.viol}\n${S.log.join('\n')}\n\n`;
+  R.rows.forEach(r=>{t+=`Q${r.i+1}: ${r.s}/${r.m} (${r.p}/${r.n} tests) ${r.msg}\n`;if(Q[r.i].t==='c')t+='----\n'+(S.ans[r.i]||'')+'\n----\n\n'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain'}));a.download='bitwise_lab_result.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+ $('nw').onclick=()=>{if(confirm('Clear this attempt from this browser? This cannot be undone.')){try{localStorage.removeItem(KEY)}catch(e){}location.reload()}}}
+
+S?run():start();
+})();
 </script>
 </body>
 </html>
